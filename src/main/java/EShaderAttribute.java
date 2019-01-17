@@ -2,6 +2,8 @@
  * Represents shader attributes.
  *
  * @author serhiy
+ *
+ * https://github.com/serhiy/jogl-lesson-2
  */
 public enum EShaderAttribute {
     POSITION("inPosition"), COLOR("inColor");

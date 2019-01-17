@@ -2,6 +2,8 @@
  * Represents the cube with different color shapes.
  *
  * @author serhiy
+ *
+ * https://github.com/serhiy/jogl-lesson-2
  */
 public class Cube {
     private final float [] vertices = { /* Front face */

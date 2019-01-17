@@ -8,6 +8,8 @@ import com.jogamp.opengl.GL2;
  * Manages the shader program.
  *
  * @author serhiy
+ *
+ * https://github.com/serhiy/jogl-lesson-2
  */
 public class ShaderProgram {
     private int programId;

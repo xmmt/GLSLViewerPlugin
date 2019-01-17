@@ -11,6 +11,8 @@ import com.jogamp.opengl.GLEventListener;
  * Performs the rendering.
  *
  * @author serhiy
+ *
+ * https://github.com/serhiy/jogl-lesson-2
  */
 public class Renderer implements GLEventListener {
 

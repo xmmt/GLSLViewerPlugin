@@ -9,6 +9,8 @@ import com.jogamp.opengl.GL2;
  * Shader program utilities.
  *
  * @author serhiy
+ *
+ * https://github.com/serhiy/jogl-lesson-2
  */
 public class ShaderUtils {
 
