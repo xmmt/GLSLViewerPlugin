@@ -21,6 +21,15 @@ public class Renderer implements GLEventListener {
     private IntBuffer indexBuffer;
     private FloatBuffer colorBuffer;
     private ShaderProgram shaderProgram;
+    private String fragmentShaderCode;
+
+    public Renderer(String shader){
+        fragmentShaderCode = shader;
+    }
+
+    public void setFragmentShaderCode(String shaderCode) {
+        fragmentShaderCode = shaderCode;
+    }
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
@@ -30,7 +39,7 @@ public class Renderer implements GLEventListener {
 //        File fragmentShader = new File("shaders/default.fs");
 
         String vertexShaderCode = "in vec3 inColor;\nin vec3 inPosition;\nout vec3 color;\nvoid main()\n{\ngl_Position = vec4(inPosition, 1.0);\ncolor = inColor;\n}\n";
-        String fragmentShaderCode = "in vec3 color;\nout vec4 outColor;\nvoid main()\n{\noutColor = vec4(color.x, color.y, color.z, 1.0);\n}\n";
+        //fragmentShaderCode = "in vec3 color;\nout vec4 outColor;\nvoid main()\n{\noutColor = vec4(color.x * 0.5, color.y, color.z, 1.0);\n}\n";
 
 
         shaderProgram = new ShaderProgram();
@@ -67,14 +76,14 @@ public class Renderer implements GLEventListener {
         gl2.glEnableVertexAttribArray(shaderProgram
                 .getShaderAttributeLocation(EShaderAttribute.POSITION));
         gl2.glEnableVertexAttribArray(shaderProgram
-                .getShaderAttributeLocation(EShaderAttribute.COLOR));
+              .getShaderAttributeLocation(EShaderAttribute.COLOR));
 
         gl2.glVertexAttribPointer(shaderProgram
                         .getShaderAttributeLocation(EShaderAttribute.POSITION), 3,
                 GL2.GL_FLOAT, false, 0, vertexBuffer.rewind());
 
         gl2.glVertexAttribPointer(shaderProgram
-                        .getShaderAttributeLocation(EShaderAttribute.COLOR), 3,
+                       .getShaderAttributeLocation(EShaderAttribute.COLOR), 3,
                 GL2.GL_FLOAT, false, 0, colorBuffer.rewind());
 
         gl2.glDrawElements(GL2.GL_TRIANGLES, cube.getIndices().length,
@@ -82,7 +91,7 @@ public class Renderer implements GLEventListener {
 
         gl2.glDisableVertexAttribArray(shaderProgram
                 .getShaderAttributeLocation(EShaderAttribute.POSITION));
-        gl2.glDisableVertexAttribArray(shaderProgram
+       gl2.glDisableVertexAttribArray(shaderProgram
                 .getShaderAttributeLocation(EShaderAttribute.COLOR));
 
         gl2.glUseProgram(0);
